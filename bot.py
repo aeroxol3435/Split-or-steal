@@ -1,5 +1,18 @@
 import discord
+import threading
+from flask import Flask
 from discord.ext import commands
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return "Bot is alive"
+
+def run_web():
+    app.run(host="0.0.0.0", port=10000)
+
+threading.Thread(target=run_web).start()
 
 TOKEN = "MTQ5ODkwNTUzMjA1NTE2MzAxMA.GH0lDx.1hDPHoKnMDisov0rY7E3ZBCwG1oRNkDgRFiCc0"
 
